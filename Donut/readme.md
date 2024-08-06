@@ -1,12 +1,6 @@
--   [Donut Chart](#donut-chart)
-    -   [Datos](#datos)
-    -   [Data Management](#data-management)
-    -   [Theme](#theme)
-    -   [Grafico](#grafico)
+# Donut Chart 
 
-# Donut Chart {#donut-chart}
-
-## Datos {#datos}
+## Datos 
 
 Lo primero será crear un `data.table` con datos simulados. En este caso son 2 categorías.
 
@@ -45,7 +39,7 @@ print(gdata, row.names = FALSE)
 ##   Mujer      A 1743318
 ```
 
-## Data Management {#data-management}
+## Data Management 
 
 Ahora necesitamos crear los minimos y máximos de los porcentajes de N respecto de cada GRUPO. La razón es que este gráfico se crea usando rectangulos de un tamaño definido por los porcentajes. Hacemos un pequeño data management.
 
@@ -79,7 +73,7 @@ print(as.data.frame(gdata), row.names = FALSE)
 ##   Mujer     A 1743318 0.5741642 1.0000000 0.4258358 1.35
 ```
 
-## Theme {#theme}
+## Theme 
 
 Ya con esto el grafico, pero primero el theme que suelo usar. Producto del mismo tuve que pasar muchos elementos a `element_blank()` .
 
@@ -118,7 +112,7 @@ olito_theme <- function(){
 }
 ```
 
-## Grafico {#grafico}
+## Grafico 
 
 ``` r
 g <- ggplot(gdata, aes(ymax=YMAX, ymin=YMIN, xmax=4, xmin=3, fill=SEXO)) +
