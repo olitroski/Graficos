@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Olito's plots"
+  sidebar:
+    style: docked  
+    contents:
+      - section: "Secciones"     
+      - href: index.qmd
+        text: "Inicio"
+      - href: donut.qmd
+        text: "Donut chart"
+      - href: barras.qmd
+        text: "Barras"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-title: "Contenido"
+    css: styles.css
+
+editor: visual
+
