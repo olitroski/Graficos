@@ -1,0 +1,3 @@
+"0","gdata <- data.frame(grupo = c(""A"", ""B"", ""C""), valor = c(13, 15, 6), "
+"0","                    valmin = c(10, 10, 5), valmax = c(15, 19, 10))"
+"0","print(gdata)"

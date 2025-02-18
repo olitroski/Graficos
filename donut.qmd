@@ -143,4 +143,4 @@ ggsave("donut.png", plot = g, width = 1500, height = 400,
 
 Y Voila!
 
-![](Donut/donut.png)
+![](docs/Donut/donut.png)

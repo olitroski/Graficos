@@ -1,0 +1,92 @@
+# Grafico Barras
+
+Aquí hay harta variedad, comenzando por lo más simple un grafico de barras con un solo campo categórico.
+
+```{r}
+#| warning: false
+# Importes
+library(data.table)
+library(ggplot2)
+```
+
+## Barras simple
+
+Primero los datos
+
+```{r}
+gdata <- data.frame(grupo = c("A", "B", "C"), valor = c(13, 15, 6), 
+                    valmin = c(10, 10, 5), valmax = c(15, 19, 10))
+print(gdata)
+```
+
+Ahora lo definicmos con geom_bar, en este caso siempr será postion dodge y stat identity
+
+```{r}
+# La versión más simple
+ggplot(gdata, aes(x = grupo, y = valor)) +
+    geom_bar(position = 'dodge', stat = 'identity')
+```
+
+### Colorear barras
+
+Lo vamos a hermosear un poco, le ponemos colores diferentes, le quitamos el expand al eje Y. Para esto (en mi opinión) es usar la vuelta larga, es decir creando un vector que tendrá los valores de color que deseamos. en el fill hacemos referencia a "grupo"
+
+> Si vamos a cambiar el `fill`, este debe estar declarado antes en el `aes`
+
+```{r}
+# Vector de colores
+vector_colores <- c("A" = "steelblue",
+                    "B" = "hotpink2", 
+                    "C" = "aquamarine4")
+print(vector_colores)
+
+# Hermoseado
+ggplot(gdata, aes(x = grupo, y = valor, fill = grupo)) +
+    geom_bar(position = 'dodge', stat = 'identity', color = 'grey30') +
+    scale_fill_manual("Colores", 
+                      values = vector_colores, 
+                      labels = c("Steelblue", "Hotpink2", "Aquamarine4")) +
+    scale_y_continuous(limits = c(0, 16), expand = c(0, 0)) + 
+    labs(x = "Grupo", y = "Valores")
+```
+
+El resto ya serían cosas estéticas como poner etiquetas, cambiar el theme, poner titulos etc.
+
+## Barras de error
+
+Esta es una solicitud constante, vamos a necesitar los valores minimos o máximos, independiente que sean desviaciones estándar, limites, SEM o lo que sea.
+
+```{r}
+# Miremos los datos
+print(gdata)
+```
+
+La tabla ya tiene minimos y máximos, usemos y creamos las barras de error. Continuamos desde el código del gráfico anterior.
+
+```{r}
+# Vector de colores
+vector_colores <- c("A" = "steelblue",
+                    "B" = "hotpink2", 
+                    "C" = "aquamarine4")
+print(vector_colores)
+
+# Hermoseado
+ggplot(gdata, aes(x = grupo, y = valor, fill = grupo)) +
+    geom_bar(position = 'dodge', stat = 'identity', color = 'grey30') +
+    
+    # Colores
+    scale_fill_manual("Colores", 
+                      values = vector_colores, 
+                      labels = c("Steelblue", "Hotpink2", "Aquamarine4")) +
+    
+    # Barras de error
+    geom_errorbar(aes(ymin = valmin, ymax = valmax), 
+                  width = 0.2,
+                  size = 1,
+                  color = "grey30") +
+    
+    # Eje y etiquetas
+    scale_y_continuous(limits = c(0, 20), expand = c(0, 0)) + 
+    labs(x = "Grupo", y = "Valores") +
+    theme_bw()
+```

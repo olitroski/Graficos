@@ -1,0 +1,2 @@
+"0","ggplot(gdata, aes(x = grupo, y = valor)) +"
+"0","    geom_bar(position = 'dodge', stat = 'identity')"

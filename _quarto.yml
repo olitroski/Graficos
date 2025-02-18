@@ -12,8 +12,8 @@ website:
         text: "Inicio"
       - href: donut.qmd
         text: "Donut chart"
-      - href: contact.qmd
-        text: "Contacto"
+      - href: barras.qmd
+        text: "Barras"
 
 format:
   html:
