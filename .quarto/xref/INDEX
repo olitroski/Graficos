@@ -1,0 +1,23 @@
+{
+  "index.qmd": {
+    "index.html": "0c4a8dcf"
+  },
+  "about.qmd": {
+    "about.html": "5ae5fdf8"
+  },
+  "Donut/donut.plot.rmd": {
+    "donut.plot.html": "60ccacd9"
+  },
+  "Donut/otra.md": {
+    "otra.html": "067c2367"
+  },
+  "Donut/readme.md": {
+    "readme.html": "017ba3ae"
+  },
+  "contact.qmd": {
+    "contact.html": "0781a0f8"
+  },
+  "donut.qmd": {
+    "donut.html": "fafa848d"
+  }
+}
